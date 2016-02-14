@@ -3,7 +3,7 @@
  * @author: Ext.NET, Inc. http://www.ext.net/
  * @date: 2012-03-05
  * @copyright: Copyright (c) 2007-2012, Ext.NET, Inc. (http://www.ext.net/). All rights reserved.
- * @license: See license.txt and http://www.ext.net/license/. 
+ * @license: See license.txt and http://www.ext.net/license/.
  * @website: http://www.ext.net/
  */
 
@@ -16,7 +16,7 @@ namespace Ext.Net.Meta.Parser
 {
     class Program
     {
-        static void Main(string[] arguments)
+        static int Main(string[] arguments)
         {
             Dictionary<string, string> args = Program.ProcessArgs(arguments);
 
@@ -37,9 +37,31 @@ namespace Ext.Net.Meta.Parser
 
             }
 
+            var ps = Path.DirectorySeparatorChar;
+
+            if (input.IsEmpty())
+            {
+                input = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".." + ps + ".." + ps + "..");
+            }
+
+            if (output.IsEmpty())
+            {
+                output = Path.Combine(input, "Factory");
+            }
+
+            if (!Directory.Exists(input))
+            {
+                Console.WriteLine("Invalid input path: " + input);
+                return 1;
+            }
+            if (!Directory.Exists(output))
+            {
+                Console.WriteLine("Invalid output path: " + output);
+                return 1;
+            }
+
             var inputPath = new Uri(input);
             var outputPath = new Uri(output);
-
 
             //Uri nsroot = new Uri(new Uri(Environment.CurrentDirectory, UriKind.Absolute), @"..\..\");
 
@@ -47,7 +69,9 @@ namespace Ext.Net.Meta.Parser
             string fileName = root.ToLower().ConcatWith(".meta");
             string[] files = "*.cs".Split(',');
             string[] ignoreFiles = "".Split(',');
-            string[] ignoreFolders = "Build,Designers,Factory,Interfaci,Core,Enums,.svn,_svn,svn".Split(',');
+            string[] ignoreFolders = "App_Readme,bin,Build,Designers,Factory,Interfaci,Core,Enums,.build".Split(',');
+
+            System.Diagnostics.Debugger.Launch();
 
             new Processor(inputPath.LocalPath, outputPath.LocalPath, fileName, root, files, ignoreFiles, ignoreFolders, null).Process();
 
@@ -58,6 +82,8 @@ namespace Ext.Net.Meta.Parser
             //fileName = root.ToLower().ConcatWith(".meta");
 
             //new Processor(input, output, fileName, root, files, ignoreFiles, ignoreFolders, new UXRoot()).Process();
+
+            return 0; // success!
         }
 
         static Dictionary<string, string> ProcessArgs(string[] arguments)
