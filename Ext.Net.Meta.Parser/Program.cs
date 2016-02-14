@@ -71,8 +71,6 @@ namespace Ext.Net.Meta.Parser
             string[] ignoreFiles = "".Split(',');
             string[] ignoreFolders = "App_Readme,bin,Build,Designers,Factory,Interfaci,Core,Enums,.build".Split(',');
 
-            System.Diagnostics.Debugger.Launch();
-
             new Processor(inputPath.LocalPath, outputPath.LocalPath, fileName, root, files, ignoreFiles, ignoreFolders, null).Process();
 
             //input = new Uri(nsroot, @"Ext.Net.UX").LocalPath;
