@@ -1,0 +1,54 @@
+﻿/********
+ * @version   : 2.0.0.beta - Ext.NET Pro License
+ * @author    : Ext.NET, Inc. http://www.ext.net/
+ * @date      : 2012-02-15
+ * @copyright : Copyright (c) 2007-2012, Ext.NET, Inc. (http://www.ext.net/). All rights reserved.
+ * @license   : See license.txt and http://www.ext.net/license/. 
+ ********/
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Ext.Net.UX
+{{
+    public partial class {Name}
+    {{
+        /*  Ctor
+            -----------------------------------------------------------------------------------------------*/
+
+        public {Name}(Config config)
+        {{
+            this.Apply(config);
+        }}
+
+
+        /*  Implicit {Name}.Config Conversion to {Name}
+            -----------------------------------------------------------------------------------------------*/
+
+        public static implicit operator {Name}({Name}.Config config)
+        {{
+            return new {Name}(config);
+        }}
+
+
+        new public partial class Config : {Extends}.Config 
+        {{ 
+            /*  Implicit {Name}.Config Conversion to {Name}.Builder
+                -----------------------------------------------------------------------------------------------*/
+
+            public static implicit operator {Name}.Builder({Name}.Config config)
+            {{
+                return new {Name}.Builder(config);
+            }}
+
+
+            /*  ConfigOptions
+                -----------------------------------------------------------------------------------------------*/
+            {ConfigOptions}
+        }}
+    }}
+}}

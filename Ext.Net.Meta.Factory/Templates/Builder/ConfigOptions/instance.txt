@@ -1,0 +1,11 @@
+﻿ 
+             /// <summary>
+            /// {Summary}
+             /// </summary>
+             /// <param name="action">The action delegate</param>
+             /// <returns>An instance of {Return}</returns>
+            public virtual {Return} {Name}(Action<{Type}> action)
+            {{
+                action(this.ToComponent().{Name});
+                return this as {Return};
+            }}

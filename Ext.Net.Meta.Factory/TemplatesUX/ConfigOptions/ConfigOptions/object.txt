@@ -1,0 +1,2 @@
+﻿
+                list.Add("{LowerCamelName}", new ConfigOption("{LowerCamelName}", {SerializationOptions}, {PrivateValue}, this.{Name} ));

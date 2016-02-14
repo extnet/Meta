@@ -1,0 +1,18 @@
+﻿
+            private {Type} {PrivateName} = {PrivateValue};
+
+            /// <summary>
+            /// {Summary}
+            /// </summary>
+            [DefaultValue({DefaultValue})]
+            public {Modifier} {Type} {Name} 
+            {{ 
+                get
+                {{
+                    return this.{PrivateName};
+                }}
+                set
+                {{
+                    this.{PrivateName} = value;
+                }}
+            }}

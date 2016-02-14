@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ext.Net.Meta", "Ext.Net.Meta\Ext.Net.Meta.csproj", "{53BE97CC-C5BE-458F-9B84-D4FD1F34AF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ext.Net.Meta.Factory", "Ext.Net.Meta.Factory\Ext.Net.Meta.Factory.csproj", "{360E0DD7-578E-4343-8F2D-C41316A9BEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ext.Net.Meta.Parser", "Ext.Net.Meta.Parser\Ext.Net.Meta.Parser.csproj", "{E843ECB9-9535-4B00-9119-3CD85DD05738}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53BE97CC-C5BE-458F-9B84-D4FD1F34AF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BE97CC-C5BE-458F-9B84-D4FD1F34AF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BE97CC-C5BE-458F-9B84-D4FD1F34AF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BE97CC-C5BE-458F-9B84-D4FD1F34AF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360E0DD7-578E-4343-8F2D-C41316A9BEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360E0DD7-578E-4343-8F2D-C41316A9BEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360E0DD7-578E-4343-8F2D-C41316A9BEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360E0DD7-578E-4343-8F2D-C41316A9BEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E843ECB9-9535-4B00-9119-3CD85DD05738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E843ECB9-9535-4B00-9119-3CD85DD05738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E843ECB9-9535-4B00-9119-3CD85DD05738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E843ECB9-9535-4B00-9119-3CD85DD05738}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

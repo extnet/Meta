@@ -1,0 +1,10 @@
+﻿ 
+             // /// <summary>
+            // /// {Summary}
+            // /// </summary>
+            // [Description("{Summary}")]
+            // public virtual TBuilder {Name}({Type} {PrivateName})
+            // {{
+            //    this.ToComponent().{Name} = {PrivateName};
+            //    return this as TBuilder;
+            // }}

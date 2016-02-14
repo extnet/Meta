@@ -1,0 +1,18 @@
+﻿
+            private {Type} {PrivateName} = null;
+
+            /// <summary>
+            /// {Summary}
+            /// </summary>
+            public {Type} {Name}
+            {{
+                get
+                {{
+                    if (this.{PrivateName} == null)
+                    {{
+                        this.{PrivateName} = new {Type}();
+                    }}
+
+                    return this.{PrivateName};
+                }}
+            }}

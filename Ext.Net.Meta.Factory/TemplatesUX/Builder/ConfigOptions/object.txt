@@ -1,0 +1,10 @@
+﻿ 
+             /// <summary>
+            /// {Summary}
+            /// </summary>
+            [Description("{Summary}")]
+            public virtual {Return} {Name}({Type} {PrivateName})
+            {{
+                this.ToComponent().{Name} = {PrivateName};
+                return this as {Return};
+            }}
