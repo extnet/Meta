@@ -60,6 +60,8 @@ namespace Ext.Net.Meta.Parser
                 return 1;
             }
 
+            Console.Write("Parsing meta information from sources: ");
+
             var inputPath = new Uri(input);
             var outputPath = new Uri(output);
 
@@ -71,7 +73,19 @@ namespace Ext.Net.Meta.Parser
             string[] ignoreFiles = "".Split(',');
             string[] ignoreFolders = "App_Readme,bin,Build,Designers,Factory,Interfaci,Core,Enums,.build".Split(',');
 
-            new Processor(inputPath.LocalPath, outputPath.LocalPath, fileName, root, files, ignoreFiles, ignoreFolders, null).Process();
+            try
+            {
+                var processorHandle = new Processor(inputPath.LocalPath, outputPath.LocalPath, fileName, root, files, ignoreFiles, ignoreFolders, null);
+                processorHandle.Process();
+                Console.WriteLine("done");
+                Console.WriteLine("Generated file: " + processorHandle.OutputFile.FullName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("error.");
+                Console.WriteLine("Error while processing meta data. Exception details:");
+                Console.WriteLine(e.ToString());
+            }
 
             //input = new Uri(nsroot, @"Ext.Net.UX").LocalPath;
             //output = new Uri(nsroot, @"Ext.Net.UX\Factory").LocalPath;

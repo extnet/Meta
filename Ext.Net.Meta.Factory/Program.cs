@@ -18,29 +18,45 @@ namespace Ext.Net.Meta.Factory
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             Meta meta = new Meta { XMLFileName = "ext.net.meta.xml", RootType = typeof(Root) };
 
-            Uri root = new Uri(new Uri(Environment.CurrentDirectory, UriKind.Absolute), @"..\..\");
-            Uri extnet = new Uri(root, @"Ext.Net\Factory\");
-            Uri factory = new Uri(root, @"Ext.Net.Meta.Factory\Templates\");
+            Uri root = new Uri(new Uri(AppDomain.CurrentDomain.BaseDirectory, UriKind.Absolute), @"..\..\..\");
+            Uri extnet = new Uri(root, @"Factory\");
+            Uri factory = new Uri(root, @"Build\Meta\Factory\Templates\");
 
             meta.OutputRoot = extnet.LocalPath;
             meta.TemplateRoot = factory.LocalPath;
 
-            meta.Run();
+            if (!Directory.Exists(meta.OutputRoot))
+            {
+                Console.WriteLine("Invalid output path: " + meta.OutputRoot);
+                return 1;
+            }
 
-            meta = new Meta { XMLFileName = "ext.net.ux.meta.xml", RootType = typeof(UXRoot) };
+            if (!Directory.Exists(meta.TemplateRoot))
+            {
+                Console.WriteLine("Invalid template path: " + meta.TemplateRoot);
+                return 1;
+            }
 
-            root = new Uri(new Uri(Environment.CurrentDirectory, UriKind.Absolute), @"..\..\");
-            extnet = new Uri(root, @"Ext.Net.UX\Factory\");
-            factory = new Uri(root, @"Ext.Net.Meta.Factory\TemplatesUX\");
+            try
+            {
+                Console.Write("Parsing meta information into MVC Factory code: ");
+                meta.Run();
+                Console.WriteLine("done.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("error.");
+                Console.WriteLine("The program did not finish successfully.");
+                Console.WriteLine("Exception details:");
+                Console.WriteLine(e.ToString());
+                return 1;
+            }
 
-            meta.OutputRoot = extnet.LocalPath;
-            meta.TemplateRoot = factory.LocalPath;
-
-            meta.Run();
+            return 0;
         }
     }
 

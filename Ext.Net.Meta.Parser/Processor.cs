@@ -25,6 +25,8 @@ namespace Ext.Net.Meta.Parser
         public string[] IgnoreFolders { get; set; }
         public Root Root;
 
+        public FileInfo OutputFile;
+
         public Processor(string input, string output, string fileName, string rootName, string[] files, string[] ignoreFiles, string[] ignoreFolders, Root root)
         {
             this.Input = Path.GetFullPath(input);
@@ -48,18 +50,23 @@ namespace Ext.Net.Meta.Parser
 
         public void Finish()
         {
+            var ps = Path.DirectorySeparatorChar;
+
             this.Root.Classes.Sort(delegate(Class x, Class y)
                                      {
                                          return x.Name.CompareTo(y.Name);
                                      });
 
-            string path = string.Concat(this.Output.TrimEnd('\\'), @"\", this.FileName);
+            string path = this.Output.TrimEnd('\\') + ps + this.FileName + ".xml";
 
             // Xml
             XmlSerializer serializer = new XmlSerializer(this.Root.GetType());
-            TextWriter writer = new StreamWriter(string.Concat(path, ".xml"));
+            TextWriter writer = new StreamWriter(string.Concat(path));
+
             serializer.Serialize(writer, this.Root);
             writer.Close();
+
+            this.OutputFile = new FileInfo(path);
         }
 
 
