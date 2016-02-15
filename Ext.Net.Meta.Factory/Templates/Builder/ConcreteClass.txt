@@ -1,12 +1,4 @@
-﻿/********
- * @version   : 2.0.0.beta - Ext.NET Pro License
- * @author    : Ext.NET, Inc. http://www.ext.net/
- * @date      : 2012-02-15
- * @copyright : Copyright (c) 2007-2012, Ext.NET, Inc. (http://www.ext.net/). All rights reserved.
- * @license   : See license.txt and http://www.ext.net/license/. 
- ********/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -23,7 +15,32 @@ namespace Ext.Net
         /// <summary>
         /// 
         /// </summary>
-        public partial class Builder : {Extends}.Builder<{Name}, {Name}.Builder>
+        new public abstract partial class Builder<T{FileName}, TBuilder> : {Extends}.Builder<T{FileName}, TBuilder>
+            where T{FileName} : {Name}
+            where TBuilder : Builder<T{FileName}, TBuilder>
+        {{
+            /*  Ctor
+                -----------------------------------------------------------------------------------------------*/
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public Builder(T{FileName} component) : base(component) {{ }}
+
+
+            /*  ConfigOptions
+                -----------------------------------------------------------------------------------------------*/
+            {ConfigOptions}
+
+            /*  Methods
+                -----------------------------------------------------------------------------------------------*/
+            {Methods}
+        }}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public partial class Builder : {Name}.Builder<{Name}, {Name}.Builder>
         {{
             /*  Ctor
                 -----------------------------------------------------------------------------------------------*/
@@ -54,15 +71,6 @@ namespace Ext.Net
             {{
                 return component.ToBuilder();
             }}
-
-
-            /*  ConfigOptions
-                -----------------------------------------------------------------------------------------------*/
-            {ConfigOptions}
-
-            /*  Methods
-                -----------------------------------------------------------------------------------------------*/
-            {Methods}
         }}
 
         /// <summary>
@@ -71,6 +79,14 @@ namespace Ext.Net
         public {Name}.Builder ToBuilder()
         {{
             return Ext.Net.X.Builder.{Name}(this);
+        }}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override IControlBuilder ToNativeBuilder()
+        {{
+            return (IControlBuilder)this.ToBuilder();
         }}
     }}
 
@@ -85,7 +101,11 @@ namespace Ext.Net
         /// </summary>
         public {Name}.Builder {Name}()
         {{
+#if MVC
+            return this.{Name}(new {Name} {{ HtmlHelper = this.HtmlHelper, ViewContext = this.HtmlHelper != null ? this.HtmlHelper.ViewContext : null }});
+#else
             return this.{Name}(new {Name}());
+#endif
         }}
 
         /// <summary>
@@ -93,6 +113,10 @@ namespace Ext.Net
         /// </summary>
         public {Name}.Builder {Name}({Name} component)
         {{
+#if MVC
+            component.HtmlHelper = this.HtmlHelper;
+            component.ViewContext = this.HtmlHelper != null ? this.HtmlHelper.ViewContext : null;
+#endif
             return new {Name}.Builder(component);
         }}
 
@@ -101,7 +125,11 @@ namespace Ext.Net
         /// </summary>
         public {Name}.Builder {Name}({Name}.Config config)
         {{
+#if MVC
+            return new {Name}.Builder(new {Name}(config) {{ HtmlHelper = this.HtmlHelper, ViewContext = this.HtmlHelper != null ? this.HtmlHelper.ViewContext : null }});
+#else
             return new {Name}.Builder(new {Name}(config));
+#endif
         }}
     }}
 }}

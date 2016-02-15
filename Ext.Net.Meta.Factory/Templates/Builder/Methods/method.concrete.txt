@@ -1,9 +1,9 @@
 ﻿
-             /// <summary>
+            /// <summary>
             /// {Summary}
             /// </summary>
             public virtual {Return} {Name}({ParamsRaw})
             {{
                 this.ToComponent().{Name}({ParamValues});
-                return this;
+                return this as {Return};
             }}
