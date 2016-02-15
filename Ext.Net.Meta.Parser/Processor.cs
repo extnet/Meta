@@ -181,6 +181,9 @@ namespace Ext.Net.Meta.Parser
                     continue;
                 }
 
+                /* This is only required for Ext.Net.API.Meta.Parser.exe which is currently not in use.
+                 * So, commented out for now and review when Ext.Net.API.Meta.Parser will be in use again if ever.
+
                 if (Utils.IsXType(line))
                 {
                     var temp = lines[i + 4].Trim();
@@ -200,10 +203,11 @@ namespace Ext.Net.Meta.Parser
                     if (temp.StartsWith("return"))
                     {
                         cls.InstanceOf = temp.RightOf('"').Replace("\"", "").Replace(" ", "").Replace(";", "").Replace(":", ",").Trim();
-                    } 
+                    }
 
                     continue;
                 }
+                */
 
                 if (cls != null && isMetaOrConfigOption)
                 {
