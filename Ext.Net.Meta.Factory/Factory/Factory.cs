@@ -113,7 +113,7 @@ namespace Ext.Net.Meta.Factory
                         Name = member.Name,
                         PrivateName = privateName.IsReservedWord() ? "_" + privateName : privateName,
                         Type = member.Type,
-                        Return = cls.Abstract ? "TBuilder" : cls.Name.ConcatWith(".Builder"),
+                        Return = "TBuilder", // cls.Abstract ? "TBuilder" : cls.Name.ConcatWith(".Builder"),
                         DefaultValue = member.DefaultValue ?? "null",
                         PrivateValue = member.PrivateValue,
                         Summary = member.Summary,
@@ -149,7 +149,7 @@ namespace Ext.Net.Meta.Factory
                     {
                         Name = member.Name,
                         PrivateName = privateName.IsReservedWord() ? "_" + privateName : privateName,
-                        Return = cls.Abstract ? "TBuilder" : cls.Name.ConcatWith(".Builder"),
+                        Return = "TBuilder", // cls.Abstract ? "TBuilder" : cls.Name.ConcatWith(".Builder"),
                         Summary = member.Summary,
                         Modifier = member.Modifier.ToString().ToLower(),
                         ParamsRaw = member.ParamsRaw,
