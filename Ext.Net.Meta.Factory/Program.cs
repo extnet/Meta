@@ -43,7 +43,7 @@ namespace Ext.Net.Meta.Factory
 
             try
             {
-                Console.Write("Parsing meta information into MVC Factory code: ");
+                Console.Write("Parsing meta information into Factory code: ");
                 meta.Run();
                 Console.WriteLine("done.");
             }
