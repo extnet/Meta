@@ -71,7 +71,7 @@ namespace Ext.Net.Meta.Parser
             string fileName = root.ToLower().ConcatWith(".meta");
             string[] files = "*.cs".Split(',');
             string[] ignoreFiles = "".Split(',');
-            string[] ignoreFolders = "App_Readme,bin,Build,Designers,Factory,Interfaci,Core,Enums,.build".Split(',');
+            string[] ignoreFolders = "App_Readme,bin,obj,Build,Designers,Factory,Interfaci,Core,Enums,.build,MVC".Split(',');
 
             try
             {
